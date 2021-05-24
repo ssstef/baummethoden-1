@@ -45,3 +45,7 @@ conf_mat = confusion_matrix(y_test, y_pred)
 
 accuracy = (conf_mat[0,0] + conf_mat[1,1]) /(conf_mat[0,0]+conf_mat[0,1]+ conf_mat[1,0]+conf_mat[1,1])
 
+
+file_to_write = open("models/baummethoden.pickle", "wb")
+pickle.dump(classifier, file_to_write)
+file_to_open = open("models/baummethoden.pickle",'rb')
