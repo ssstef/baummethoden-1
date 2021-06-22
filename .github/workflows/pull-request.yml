@@ -7,14 +7,8 @@ jobs:
   train-model:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Switch to heroku branch
-        shell: bash
-        run: |
-          git config --global user.email ""
-          git config --global user.name "Github Actions"
-          git pull
-          git checkout heroku
+      - name: Checkout
+        uses: actions/checkout@v2
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
