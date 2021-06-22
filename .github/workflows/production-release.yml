@@ -35,7 +35,7 @@ jobs:
         run: |
           git add .
           git commit -m "[CI] update trained model" || echo "No changes to commit"
-          git push
+          git push --set-upstream origin heroku
       - name: Deploy to Heroku
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
