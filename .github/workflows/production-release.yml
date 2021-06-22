@@ -14,9 +14,9 @@ jobs:
         run: |
           git config --global user.email ""
           git config --global user.name "Github Actions"
-          git pull
+          git fetch --all --unshallow
           git checkout heroku 2>/dev/null || git checkout -b heroku
-          git merge main
+          git merge main -X theirs --allow-unrelated-histories
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
@@ -34,6 +34,7 @@ jobs:
         shell: bash
         run: |
           git add .
+          git add --force models/baummethoden.pickle
           git commit -m "[CI] update trained model" || echo "No changes to commit"
           git push --set-upstream origin heroku
       - name: Deploy to Heroku
