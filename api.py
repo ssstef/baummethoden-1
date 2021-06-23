@@ -2,8 +2,10 @@ from flask import Flask, Response, jsonify, request
 import pandas as pd
 import os
 from io import StringIO
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 training_data = pd.read_csv(os.path.join('data', 'data_banknote_authentication.csv'))
 
