@@ -19,8 +19,9 @@
 - run python script: `python <filename.py> `, e.g. `python train.py`
 - install new dependency: `pip install sklearn`
 - save current installed dependencies back to requirements.txt: `pip freeze > requirements.txt`
+- start python api with `python wsgi.py`
 
-## GitHub Actions Deployment
+## Set Up API Hosting
 
 - Create a heroku account
 - Create a new app and save the name
@@ -31,6 +32,35 @@
 - Add your email address (the one you used for creating the heroku account) as `HEROKU_EMAIL`
 - The github actions scripts assumes that a `heroku` branch exists. If it doesn't, create the branch
 - After the first successful github actions deployment, you should be able to access the api via `https://<your-app-name>.herokuapp.com`
+
+## GitHub Actions within this repository
+
+### pull-request
+
+- action that is run on every pull request `open` and `synchronize` event
+
+```
+on:
+  pull_request:
+    types: [opened, synchronize]
+```
+
+- the action will run `train.py` and upload the model as an artifact inside the action
+
+### production-release
+
+- action that is run on every `push`in the `main` branch (that also includes merges from any other branch to `main` branch)
+
+```
+on:
+  push:
+    branches:
+      - main
+```
+
+- the action will run `train.py` and upload the model as an artifact inside the action
+- the action will create or checkout a branch called `heroku` and merge `main` to `heroku`
+- the action will deploy the code to heroku hosting and run the API, see the [action documentation](https://github.com/AkhileshNS/heroku-deploy) for more information
 
 ## Useful commands
 
