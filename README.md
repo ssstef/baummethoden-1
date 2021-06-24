@@ -9,8 +9,16 @@
 
 ## Setup
 
+### Linux Users
+
 - create new python environment: `python3 -m venv .venv`
 - activate python environment: `source .venv/bin/activate`
+- install dependencies: `pip install -r requirements.txt`
+
+### Windows Users
+
+- create new python environment: `python -m venv .venv`
+- activate python environment: `.\.venv\Scripts\Activate.ps1`
 - install dependencies: `pip install -r requirements.txt`
 
 ## Development
