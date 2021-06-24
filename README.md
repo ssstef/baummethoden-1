@@ -93,3 +93,5 @@ on:
 - install dependencies from file: `pip install -r requirements.txt`
 - install single pandas dependency `pip install pandas`
 - checkout git branch (if exists) or create a new one (if it does not exist): `git checkout foo 2>/dev/null || git checkout -b foo`, see https://stackoverflow.com/questions/26961371/switch-on-another-branch-create-if-not-exists-without-checking-if-already-exi
+
+- Actions aktivieren
